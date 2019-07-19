@@ -1,0 +1,72 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: akka-upgrade-testing
+  name: akka-upgrade-testing
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: akka-upgrade-testing
+  template:
+    metadata:
+      labels:
+        app: akka-upgrade-testing
+        actorSystemName: akka-upgrade-testing
+    spec:
+      containers:
+        - name: appka
+          image: akka-upgrade-testing:VERSION
+          imagePullPolicy: Never
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: management
+          livenessProbe:
+            tcpSocket:
+              port: management
+          ports:
+            - name: remoting
+              containerPort: 2552
+              protocol: TCP
+            - name: management
+              containerPort: 8558
+              protocol: TCP
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: akka-upgrade-testing-service
+spec:
+  selector:
+    app: akka-upgrade-testing
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+---
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: pod-reader
+rules:
+  - apiGroups: [""] # "" indicates the core API group
+    resources: ["pods"]
+    verbs: ["get", "watch", "list"]
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: read-pods
+subjects:
+  - kind: User
+    name: system:serviceaccount:default:default
+roleRef:
+  kind: Role
+  name: pod-reader
+  apiGroup: rbac.authorization.k8s.io
