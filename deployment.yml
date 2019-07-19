@@ -3,9 +3,9 @@ kind: Deployment
 metadata:
   labels:
     app: akka-upgrade-testing
-  name: akka-upgrade-testing
+  name: akka-upgrade-testing-COLOUR
 spec:
-  replicas: 3
+  replicas: REPLICAS
   selector:
     matchLabels:
       app: akka-upgrade-testing
