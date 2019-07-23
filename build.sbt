@@ -53,7 +53,8 @@ lazy val proto2 = (project in file("proto2"))
       args =>
         Process(protoc, args) ! s.log
     },
-    (ProtobufConfig / javaSource) := (Compile / javaSource).value
+    (ProtobufConfig / javaSource) := (Compile / javaSource).value,
+    libraryDependencies += Dependencies.scalaTest
   )
 
 lazy val proto3 = (project in file("proto3"))
@@ -61,5 +62,6 @@ lazy val proto3 = (project in file("proto3"))
   .settings(
     (ProtobufConfig / version) := "3.9.0",
     protobufProtoc := "protoc",
-    (ProtobufConfig / javaSource) := (Compile / javaSource).value
+    (ProtobufConfig / javaSource) := (Compile / javaSource).value,
+    libraryDependencies += Dependencies.scalaTest
   )
