@@ -10,3 +10,6 @@ as a docker image.
 A cluster is started in `mimikube` and for version in a list is is half upgraded,
 tests run to make sure there is communication between nodes and then the upgrade
 is completed.
+
+TODO:
+* Endpoint for akka version

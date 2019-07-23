@@ -1,6 +1,8 @@
 import Dependencies._
-
 import com.typesafe.sbt.packager.docker._
+import Keys._
+
+import scala.sys.process.Process
 
 enablePlugins(JavaServerAppPackaging)
 
@@ -37,4 +39,27 @@ lazy val root = (project in file("."))
       ),
       Cmd("RUN", "chgrp -R 0 . && chmod -R g=u .")
     )
+  )
+
+lazy val proto2 = (project in file("proto2"))
+  .enablePlugins(ProtobufPlugin)
+  .settings(
+    (ProtobufConfig / version) := "2.5.0",
+    protobufProtoc := "protoc-2.5.0",
+    ProtobufConfig / protobufRunProtoc := {
+      val s = streams.value
+      val protoc = protobufProtoc.value
+      println("Running: " + protoc)
+      args =>
+        Process(protoc, args) ! s.log
+    },
+    (ProtobufConfig / javaSource) := (Compile / javaSource).value
+  )
+
+lazy val proto3 = (project in file("proto3"))
+  .enablePlugins(ProtobufPlugin)
+  .settings(
+    (ProtobufConfig / version) := "3.9.0",
+    protobufProtoc := "protoc",
+    (ProtobufConfig / javaSource) := (Compile / javaSource).value
   )
