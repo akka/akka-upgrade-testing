@@ -12,6 +12,7 @@ cache:
     - $HOME/.sbt
 
 script:
+  - ./scripts/setup-protoc.sh
   - sbt "proto2 / run"
   - sbt "proto3 / run"
   - sbt test
