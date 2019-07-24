@@ -4,6 +4,9 @@ language: scala
 
 before_install:
   - sudo apt-get install -y scala
+  - curl -sL https://raw.githubusercontent.com/shyiko/jabba/0.11.1/install.sh | bash && . ~/.jabba/jabba.sh
+  - jabba install adopt@~1.8.192-12
+
 
 before_cache:
   - find $HOME/.ivy2 -name "ivydata-*.properties" -print -delete
@@ -13,10 +16,12 @@ cache:
   directories:
     - $HOME/.ivy2/cache
     - $HOME/.sbt
+    - $HOME/.jabba/jdk
 
 script:
   - ./scripts/setup-protoc.sh
   - sbt "proto2 / run"
   - sbt "proto3 / run"
   - sbt test
+  - jabba use ${JDK:=adopt@~1.8.192-12}
   - ./scripts/setup-minikube-for-linux.sh && scala rolling-restart/upgrade-test.sc
