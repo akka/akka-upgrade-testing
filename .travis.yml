@@ -16,4 +16,4 @@ script:
   - sbt "proto2 / run"
   - sbt "proto3 / run"
   - sbt test
-  - ./scripts/setup-minikube-for-linux.sh && scala rolling-restart/upgrade-test.sc
+  - ./scripts/setup-minikube-for-linux.sh && cat rolling-restart/upgrade-test.sc | sbt console # scala is not installed, only sbt
