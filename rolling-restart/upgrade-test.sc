@@ -25,7 +25,7 @@ case object Blue extends Colour {
 }
 
 // TODO add nightly here before a release
-val akkaVersions = Seq("2.5.23", "2.6-SNAPSHOT")
+val akkaVersions = Seq("2.5.23", "2.6.0-M4")
 
 def deploy(version: String, colour: Colour , replicas: Int): Unit = {
   "cat deployment.yml" #| s"sed s/VERSION/$version/g" #| s"sed s/COLOUR/${colour.name}/g" #| s"sed s/REPLICAS/$replicas/g" #| "kubectl apply -f -" !
