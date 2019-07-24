@@ -1,0 +1,18 @@
+sudo: required
+dist: xenial
+language: scala
+
+before_cache:
+  - find $HOME/.ivy2 -name "ivydata-*.properties" -print -delete
+  - find $HOME/.sbt  -name "*.lock"               -print -delete
+
+cache:
+  directories:
+    - $HOME/.ivy2/cache
+    - $HOME/.sbt
+
+script:
+  - sbt "proto2 / run"
+  - sbt "proto3 / run"
+  - sbt test
+  - ./scripts/setup-minikube-for-linux.sh && scala rolling-restart/upgrade-test.sc

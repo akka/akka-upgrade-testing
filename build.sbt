@@ -4,16 +4,18 @@ import Keys._
 
 import scala.sys.process.Process
 
-enablePlugins(JavaServerAppPackaging)
-
 version := akkaVersion
 
-ThisBuild / scalaVersion := "2.12.0"
+ThisBuild / scalaVersion := "2.12.8"
 ThisBuild / version := "0.1.0-SNAPSHOT"
-ThisBuild / organization := "io.akka."
+ThisBuild / organization := "com.lightbend"
 ThisBuild / organizationName := "Lightbend Inc"
 
 lazy val root = (project in file("."))
+  .aggregate(rollingRestart, proto2, proto3)
+
+lazy val rollingRestart = (project in file("rolling-restart"))
+  .enablePlugins(JavaServerAppPackaging)
   .settings(name := "akka-upgrade-testing", libraryDependencies ++= serviceDeps)
   .settings(
     dockerCommands :=

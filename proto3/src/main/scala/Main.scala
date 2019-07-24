@@ -2,7 +2,7 @@ import java.io.BufferedOutputStream
 import java.io.FileOutputStream
 
 import akka.cluster.protobuf.msg.ClusterMessages
-import akka.cluster.protobuf.msg.ClusterMessages.ConfigCheck
+import akka.cluster.protobuf.msg.ClusterMessages.ConfigCheck;
 
 object Main extends App {
 
@@ -61,10 +61,9 @@ object Main extends App {
   messages.foreach { msg =>
     val bos =
       new BufferedOutputStream(
-        new FileOutputStream(s"messages/proto2/${msg._1}.out")
+        new FileOutputStream(s"messages/proto3/${msg._1}.out")
       )
     bos.write(msg._2)
     bos.close()
   }
-
 }

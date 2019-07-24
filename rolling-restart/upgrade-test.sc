@@ -24,9 +24,8 @@ case object Blue extends Colour {
   override def name = "blue"
 }
 
-// TODO take in from command line and include the latest nightly
+// TODO add nightly here before a release
 val akkaVersions = Seq("2.5.23", "2.6-SNAPSHOT")
-//val akkaVersions = Seq("2.5.23")
 
 def deploy(version: String, colour: Colour , replicas: Int): Unit = {
   "cat deployment.yml" #| s"sed s/VERSION/$version/g" #| s"sed s/COLOUR/${colour.name}/g" #| s"sed s/REPLICAS/$replicas/g" #| "kubectl apply -f -" !
@@ -104,7 +103,7 @@ def buildImages(): Unit = {
 
 var colour: Colour = Green
 
-//buildImages()
+buildImages()
 
 println(s"Creating initial cluster with ${akkaVersions.head}")
 deploy(akkaVersions.head, colour, 3)
