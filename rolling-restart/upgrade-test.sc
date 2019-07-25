@@ -95,7 +95,7 @@ def buildImages(): Unit = {
   println("Building images")
   akkaVersions foreach { version =>
     println(s"Building $version")
-    s"""sbt -Doverride.akka.version=$version "rollingRestart / docker:publishLocal" """ !
+    s"./buildImage.sh $version" !
   }
   "docker images" #| "head" !
 }
