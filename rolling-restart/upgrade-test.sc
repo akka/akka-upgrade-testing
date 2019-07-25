@@ -95,7 +95,7 @@ def buildImages(): Unit = {
   println("Building images")
   akkaVersions foreach { version =>
     println(s"Building $version")
-    s"sbt -Doverride.akka.version=$version docker:publishLocal" !
+    s"""sbt -Doverride.akka.version=$version "rollingRestart / docker:publishLocal" """ !
   }
   "docker images" #| "head" !
 }
@@ -104,6 +104,8 @@ def buildImages(): Unit = {
 var colour: Colour = Green
 
 buildImages()
+
+/*
 
 println(s"Creating initial cluster with ${akkaVersions.head}")
 deploy(akkaVersions.head, colour, 3)
@@ -139,4 +141,4 @@ akkaVersions.tail foreach { version =>
 s"kubectl delete deployment akka-upgrade-testing-$colour" !
 
 
-
+*/
