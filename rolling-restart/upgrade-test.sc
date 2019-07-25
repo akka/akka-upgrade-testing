@@ -105,8 +105,6 @@ var colour: Colour = Green
 
 buildImages()
 
-/*
-
 println(s"Creating initial cluster with ${akkaVersions.head}")
 deploy(akkaVersions.head, colour, 3)
 
@@ -140,5 +138,3 @@ akkaVersions.tail foreach { version =>
 
 s"kubectl delete deployment akka-upgrade-testing-$colour" !
 
-
-*/
