@@ -24,4 +24,4 @@ script:
   - sbt "proto3 / run"
   - sbt test
   - jabba use ${JDK:=adopt@~1.8.192-12}
-  - ./scripts/setup-minikube-for-linux.sh && sbt "rollingUpgrade / it:test"
+  - ./scripts/setup-minikube-for-linux.sh && sbt "rollingRestart / it:test"
