@@ -8,8 +8,9 @@ import akka.management.scaladsl.AkkaManagement
 import akka.stream.ActorMaterializer
 
 object Main extends App {
-  implicit val system = ActorSystem()
-  implicit val materializer = ActorMaterializer()
+  implicit val system: ActorSystem = ActorSystem()
+  implicit val materializer: ActorMaterializer = ActorMaterializer()
+  system.actorOf(CollectVersions.props(), "version")
   val cluster = Cluster(system)
   val management = AkkaManagement(system)
   management.start()

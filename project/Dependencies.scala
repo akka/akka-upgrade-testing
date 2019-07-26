@@ -1,7 +1,7 @@
 import sbt._
 
 object Dependencies {
-  val akkaVersion = System.getProperty("override.akka.version", "2.5.22")
+  val akkaVersion = System.getProperty("override.akka.version", "2.5.23")
   val akkaManagementVersion = "1.0.1"
   val akkaHttpVersion = "10.1.9"
 

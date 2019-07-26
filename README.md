@@ -23,9 +23,10 @@ Have minikube running and setup docker to point to minikube's VM e.g. run:
 eval $(minikube docker-env)
 ```
 
-Modify `rolling-restart/upgrade-test.sc` to include the versions you want to test. Then run it.
+Modify `akkaVersions` in `RollingUpgradeSpec` to include the versions of Akka under test then run:
 
 ```
-scala rolling-restart/upgrade-test.sc
+sbt "rollingRestart / it:test"
 ```
+
 

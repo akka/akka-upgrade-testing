@@ -18,11 +18,12 @@ object InfoRoute {
 }
 
 class InfoRoute(system: ActorSystem) extends SprayJsonSupport {
-  implicit val itemFormat: RootJsonFormat[Info] = jsonFormat1(Info)
+  implicit val itemFormat: RootJsonFormat[CollectVersions.Version] =
+    jsonFormat1(CollectVersions.Version)
 
   val route: Route = get {
-    path("info") {
-      complete(Info(ManifestInfo(system).versions("akka-actor").version))
+    path("versions") {
+      complete(CollectVersions.collect(system))
     }
   }
 }
