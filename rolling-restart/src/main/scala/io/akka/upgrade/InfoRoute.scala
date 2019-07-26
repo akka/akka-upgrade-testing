@@ -11,13 +11,14 @@ import akka.http.scaladsl.server.Route
 import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.model.StatusCodes
 import akka.util.ManifestInfo
+import spray.json.RootJsonFormat
 
 object InfoRoute {
   case class Info(akkaVersion: String)
 }
 
 class InfoRoute(system: ActorSystem) extends SprayJsonSupport {
-  implicit val itemFormat = jsonFormat1(Info)
+  implicit val itemFormat: RootJsonFormat[Info] = jsonFormat1(Info)
 
   val route: Route = get {
     path("info") {

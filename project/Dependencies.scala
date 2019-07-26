@@ -26,7 +26,7 @@ object Dependencies {
       akkaManagementBootstrap,
       akkaHttp,
       akkaHttpSprayJson,
-      scalaTest
+      scalaTest % "it"
     )
 
 }

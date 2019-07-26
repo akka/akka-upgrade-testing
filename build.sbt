@@ -40,6 +40,8 @@ lazy val rollingRestart = (project in file("rolling-restart"))
       Cmd("RUN", "chgrp -R 0 . && chmod -R g=u .")
     )
   )
+  .configs(IntegrationTest)
+  .settings(Defaults.itSettings)
 
 lazy val proto2 = (project in file("proto2"))
   .enablePlugins(ProtobufPlugin)
@@ -54,7 +56,7 @@ lazy val proto2 = (project in file("proto2"))
         Process(protoc, args) ! s.log
     },
     (ProtobufConfig / javaSource) := (Compile / javaSource).value,
-    libraryDependencies += Dependencies.scalaTest
+    libraryDependencies += Dependencies.scalaTest % "test"
   )
 
 lazy val proto3 = (project in file("proto3"))
@@ -63,5 +65,5 @@ lazy val proto3 = (project in file("proto3"))
     (ProtobufConfig / version) := "3.9.0",
     protobufProtoc := "protoc",
     (ProtobufConfig / javaSource) := (Compile / javaSource).value,
-    libraryDependencies += Dependencies.scalaTest
+    libraryDependencies += Dependencies.scalaTest % "test"
   )
