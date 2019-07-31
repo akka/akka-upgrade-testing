@@ -52,7 +52,7 @@ class RollingUpgradeSpec
   implicit val system = ActorSystem()
   implicit val mat = ActorMaterializer()
 
-  override implicit val patienceConfig: PatienceConfig = PatienceConfig(timeout = Span(30, Seconds))
+  override implicit val patienceConfig: PatienceConfig = PatienceConfig(timeout = Span(120, Seconds))
 
   // add nightly here before a release
   val akkaVersions = Seq("2.5.23", "2.6.0-M5")
