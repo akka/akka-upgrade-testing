@@ -27,8 +27,7 @@ object CollectVersions {
       case GetVersion =>
         sender() ! Version(
           Cluster(context.system).selfMember.address.toString,
-          ManifestInfo(context.system).versions("akka-actor").version
-        )
+          ManifestInfo(context.system).versions("akka-actor").version)
     }
   }
 
@@ -39,16 +38,9 @@ object CollectVersions {
     val members = Cluster(system).state.members
     Log.info("Collecting versions for members: {}", members)
     Future
-      .traverse(members.toSeq)(
-        member =>
-          system
-            .actorSelection(RootActorPath(member.address) / "user" / "version")
-            .resolveOne(5.second)
-      )
-      .flatMap(
-        (allRefs: Seq[ActorRef]) =>
-          Future.traverse(allRefs)(ref => ref.ask(GetVersion).mapTo[Version])
-      )
+      .traverse(members.toSeq)(member =>
+        system.actorSelection(RootActorPath(member.address) / "user" / "version").resolveOne(5.second))
+      .flatMap((allRefs: Seq[ActorRef]) => Future.traverse(allRefs)(ref => ref.ask(GetVersion).mapTo[Version]))
 
   }
 }

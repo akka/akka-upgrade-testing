@@ -19,9 +19,7 @@ object Main extends App {
 
   val infoRoute = new InfoRoute(system)
   val interface =
-    if (system.settings.config.getString(
-          "akka.remote.artery.canonical.hostname"
-        ) == "<getHostAddress>")
+    if (system.settings.config.getString("akka.remote.artery.canonical.hostname") == "<getHostAddress>")
       "0.0.0.0"
     else
       system.settings.config.getString("akka.remote.artery.canonical.hostname")

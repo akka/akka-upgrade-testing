@@ -16,9 +16,9 @@ class TestsRoute(system: ActorSystem) extends SprayJsonSupport {
       path("sharding") {
         complete("TODO sharding")
       } ~
-        path("ddata") {
-          complete("TODO ddata")
-        }
+      path("ddata") {
+        complete("TODO ddata")
+      }
     }
   }
 }
