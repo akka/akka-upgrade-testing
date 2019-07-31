@@ -3,7 +3,6 @@ dist: xenial
 language: scala
 
 before_install:
-  - sudo apt-get install -y scala
   - curl -sL https://raw.githubusercontent.com/shyiko/jabba/0.11.1/install.sh | bash && . ~/.jabba/jabba.sh
   - jabba install adopt@~1.8.192-12
 

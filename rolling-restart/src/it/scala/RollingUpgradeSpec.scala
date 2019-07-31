@@ -32,8 +32,8 @@ object RollingUpgradeSpec {
 class RollingUpgradeSpec extends WordSpec with BeforeAndAfterAll {
   import RollingUpgradeSpec._
 
-  // TODO add nightly here before a release
-  val akkaVersions = Seq("2.5.23", "2.6.0-M4", "2.6-SNAPSHOT")
+  // add nightly here before a release
+  val akkaVersions = Seq("2.5.23", "2.6.0-M5")
 
   def deploy(version: String, colour: Colour, replicas: Int): Unit = {
     "cat deployment.yml" #| s"sed s/VERSION/$version/g" #| s"sed s/COLOUR/${colour.name}/g" #| s"sed s/REPLICAS/$replicas/g" #| "kubectl apply -f -" !
