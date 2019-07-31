@@ -7,9 +7,6 @@ public final class ClusterMessages {
   private ClusterMessages() {}
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistryLite registry) {
-    registry.add(akka.cluster.protobuf.msg.ClusterMessages.UncheckedConfig.checkConfig);
-    registry.add(akka.cluster.protobuf.msg.ClusterMessages.IncompatibleConfig.checkConfig);
-    registry.add(akka.cluster.protobuf.msg.ClusterMessages.CompatibleConfig.checkConfig);
   }
 
   public static void registerAllExtensions(
@@ -4254,1489 +4251,6 @@ public final class ClusterMessages {
       return DEFAULT_INSTANCE;
     }
 
-  }
-
-  public interface UncheckedConfigOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:UncheckedConfig)
-      com.google.protobuf.MessageOrBuilder {
-  }
-  /**
-   * <pre>
-   * TODO check that making these fields optional is wire compatible
-   * We must "always" set them otherwise a rolling update won't work
-   * as older version deserialisation will fail
-   * </pre>
-   *
-   * Protobuf type {@code UncheckedConfig}
-   */
-  public  static final class UncheckedConfig extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:UncheckedConfig)
-      UncheckedConfigOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use UncheckedConfig.newBuilder() to construct.
-    private UncheckedConfig(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private UncheckedConfig() {
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new UncheckedConfig();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private UncheckedConfig(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return akka.cluster.protobuf.msg.ClusterMessages.internal_static_UncheckedConfig_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return akka.cluster.protobuf.msg.ClusterMessages.internal_static_UncheckedConfig_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              akka.cluster.protobuf.msg.ClusterMessages.UncheckedConfig.class, akka.cluster.protobuf.msg.ClusterMessages.UncheckedConfig.Builder.class);
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof akka.cluster.protobuf.msg.ClusterMessages.UncheckedConfig)) {
-        return super.equals(obj);
-      }
-      akka.cluster.protobuf.msg.ClusterMessages.UncheckedConfig other = (akka.cluster.protobuf.msg.ClusterMessages.UncheckedConfig) obj;
-
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static akka.cluster.protobuf.msg.ClusterMessages.UncheckedConfig parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static akka.cluster.protobuf.msg.ClusterMessages.UncheckedConfig parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static akka.cluster.protobuf.msg.ClusterMessages.UncheckedConfig parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static akka.cluster.protobuf.msg.ClusterMessages.UncheckedConfig parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static akka.cluster.protobuf.msg.ClusterMessages.UncheckedConfig parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static akka.cluster.protobuf.msg.ClusterMessages.UncheckedConfig parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static akka.cluster.protobuf.msg.ClusterMessages.UncheckedConfig parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static akka.cluster.protobuf.msg.ClusterMessages.UncheckedConfig parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static akka.cluster.protobuf.msg.ClusterMessages.UncheckedConfig parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static akka.cluster.protobuf.msg.ClusterMessages.UncheckedConfig parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static akka.cluster.protobuf.msg.ClusterMessages.UncheckedConfig parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static akka.cluster.protobuf.msg.ClusterMessages.UncheckedConfig parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(akka.cluster.protobuf.msg.ClusterMessages.UncheckedConfig prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * <pre>
-     * TODO check that making these fields optional is wire compatible
-     * We must "always" set them otherwise a rolling update won't work
-     * as older version deserialisation will fail
-     * </pre>
-     *
-     * Protobuf type {@code UncheckedConfig}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:UncheckedConfig)
-        akka.cluster.protobuf.msg.ClusterMessages.UncheckedConfigOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return akka.cluster.protobuf.msg.ClusterMessages.internal_static_UncheckedConfig_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return akka.cluster.protobuf.msg.ClusterMessages.internal_static_UncheckedConfig_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                akka.cluster.protobuf.msg.ClusterMessages.UncheckedConfig.class, akka.cluster.protobuf.msg.ClusterMessages.UncheckedConfig.Builder.class);
-      }
-
-      // Construct using akka.cluster.protobuf.msg.ClusterMessages.UncheckedConfig.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return akka.cluster.protobuf.msg.ClusterMessages.internal_static_UncheckedConfig_descriptor;
-      }
-
-      @java.lang.Override
-      public akka.cluster.protobuf.msg.ClusterMessages.UncheckedConfig getDefaultInstanceForType() {
-        return akka.cluster.protobuf.msg.ClusterMessages.UncheckedConfig.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public akka.cluster.protobuf.msg.ClusterMessages.UncheckedConfig build() {
-        akka.cluster.protobuf.msg.ClusterMessages.UncheckedConfig result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public akka.cluster.protobuf.msg.ClusterMessages.UncheckedConfig buildPartial() {
-        akka.cluster.protobuf.msg.ClusterMessages.UncheckedConfig result = new akka.cluster.protobuf.msg.ClusterMessages.UncheckedConfig(this);
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof akka.cluster.protobuf.msg.ClusterMessages.UncheckedConfig) {
-          return mergeFrom((akka.cluster.protobuf.msg.ClusterMessages.UncheckedConfig)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(akka.cluster.protobuf.msg.ClusterMessages.UncheckedConfig other) {
-        if (other == akka.cluster.protobuf.msg.ClusterMessages.UncheckedConfig.getDefaultInstance()) return this;
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        akka.cluster.protobuf.msg.ClusterMessages.UncheckedConfig parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (akka.cluster.protobuf.msg.ClusterMessages.UncheckedConfig) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:UncheckedConfig)
-    }
-
-    // @@protoc_insertion_point(class_scope:UncheckedConfig)
-    private static final akka.cluster.protobuf.msg.ClusterMessages.UncheckedConfig DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new akka.cluster.protobuf.msg.ClusterMessages.UncheckedConfig();
-    }
-
-    public static akka.cluster.protobuf.msg.ClusterMessages.UncheckedConfig getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<UncheckedConfig>
-        PARSER = new com.google.protobuf.AbstractParser<UncheckedConfig>() {
-      @java.lang.Override
-      public UncheckedConfig parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new UncheckedConfig(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<UncheckedConfig> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<UncheckedConfig> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public akka.cluster.protobuf.msg.ClusterMessages.UncheckedConfig getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-    public static final int CHECKCONFIG_FIELD_NUMBER = 100;
-    /**
-     * <code>extend .ConfigCheck { ... }</code>
-     */
-    public static final
-      com.google.protobuf.GeneratedMessage.GeneratedExtension<
-        akka.cluster.protobuf.msg.ClusterMessages.ConfigCheck,
-        akka.cluster.protobuf.msg.ClusterMessages.UncheckedConfig> checkConfig = com.google.protobuf.GeneratedMessage
-            .newMessageScopedGeneratedExtension(
-          akka.cluster.protobuf.msg.ClusterMessages.UncheckedConfig.getDefaultInstance(),
-          0,
-          akka.cluster.protobuf.msg.ClusterMessages.UncheckedConfig.class,
-          akka.cluster.protobuf.msg.ClusterMessages.UncheckedConfig.getDefaultInstance());
-  }
-
-  public interface IncompatibleConfigOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:IncompatibleConfig)
-      com.google.protobuf.MessageOrBuilder {
-  }
-  /**
-   * Protobuf type {@code IncompatibleConfig}
-   */
-  public  static final class IncompatibleConfig extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:IncompatibleConfig)
-      IncompatibleConfigOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use IncompatibleConfig.newBuilder() to construct.
-    private IncompatibleConfig(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private IncompatibleConfig() {
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new IncompatibleConfig();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private IncompatibleConfig(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return akka.cluster.protobuf.msg.ClusterMessages.internal_static_IncompatibleConfig_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return akka.cluster.protobuf.msg.ClusterMessages.internal_static_IncompatibleConfig_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              akka.cluster.protobuf.msg.ClusterMessages.IncompatibleConfig.class, akka.cluster.protobuf.msg.ClusterMessages.IncompatibleConfig.Builder.class);
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof akka.cluster.protobuf.msg.ClusterMessages.IncompatibleConfig)) {
-        return super.equals(obj);
-      }
-      akka.cluster.protobuf.msg.ClusterMessages.IncompatibleConfig other = (akka.cluster.protobuf.msg.ClusterMessages.IncompatibleConfig) obj;
-
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static akka.cluster.protobuf.msg.ClusterMessages.IncompatibleConfig parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static akka.cluster.protobuf.msg.ClusterMessages.IncompatibleConfig parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static akka.cluster.protobuf.msg.ClusterMessages.IncompatibleConfig parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static akka.cluster.protobuf.msg.ClusterMessages.IncompatibleConfig parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static akka.cluster.protobuf.msg.ClusterMessages.IncompatibleConfig parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static akka.cluster.protobuf.msg.ClusterMessages.IncompatibleConfig parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static akka.cluster.protobuf.msg.ClusterMessages.IncompatibleConfig parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static akka.cluster.protobuf.msg.ClusterMessages.IncompatibleConfig parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static akka.cluster.protobuf.msg.ClusterMessages.IncompatibleConfig parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static akka.cluster.protobuf.msg.ClusterMessages.IncompatibleConfig parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static akka.cluster.protobuf.msg.ClusterMessages.IncompatibleConfig parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static akka.cluster.protobuf.msg.ClusterMessages.IncompatibleConfig parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(akka.cluster.protobuf.msg.ClusterMessages.IncompatibleConfig prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code IncompatibleConfig}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:IncompatibleConfig)
-        akka.cluster.protobuf.msg.ClusterMessages.IncompatibleConfigOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return akka.cluster.protobuf.msg.ClusterMessages.internal_static_IncompatibleConfig_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return akka.cluster.protobuf.msg.ClusterMessages.internal_static_IncompatibleConfig_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                akka.cluster.protobuf.msg.ClusterMessages.IncompatibleConfig.class, akka.cluster.protobuf.msg.ClusterMessages.IncompatibleConfig.Builder.class);
-      }
-
-      // Construct using akka.cluster.protobuf.msg.ClusterMessages.IncompatibleConfig.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return akka.cluster.protobuf.msg.ClusterMessages.internal_static_IncompatibleConfig_descriptor;
-      }
-
-      @java.lang.Override
-      public akka.cluster.protobuf.msg.ClusterMessages.IncompatibleConfig getDefaultInstanceForType() {
-        return akka.cluster.protobuf.msg.ClusterMessages.IncompatibleConfig.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public akka.cluster.protobuf.msg.ClusterMessages.IncompatibleConfig build() {
-        akka.cluster.protobuf.msg.ClusterMessages.IncompatibleConfig result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public akka.cluster.protobuf.msg.ClusterMessages.IncompatibleConfig buildPartial() {
-        akka.cluster.protobuf.msg.ClusterMessages.IncompatibleConfig result = new akka.cluster.protobuf.msg.ClusterMessages.IncompatibleConfig(this);
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof akka.cluster.protobuf.msg.ClusterMessages.IncompatibleConfig) {
-          return mergeFrom((akka.cluster.protobuf.msg.ClusterMessages.IncompatibleConfig)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(akka.cluster.protobuf.msg.ClusterMessages.IncompatibleConfig other) {
-        if (other == akka.cluster.protobuf.msg.ClusterMessages.IncompatibleConfig.getDefaultInstance()) return this;
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        akka.cluster.protobuf.msg.ClusterMessages.IncompatibleConfig parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (akka.cluster.protobuf.msg.ClusterMessages.IncompatibleConfig) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:IncompatibleConfig)
-    }
-
-    // @@protoc_insertion_point(class_scope:IncompatibleConfig)
-    private static final akka.cluster.protobuf.msg.ClusterMessages.IncompatibleConfig DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new akka.cluster.protobuf.msg.ClusterMessages.IncompatibleConfig();
-    }
-
-    public static akka.cluster.protobuf.msg.ClusterMessages.IncompatibleConfig getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<IncompatibleConfig>
-        PARSER = new com.google.protobuf.AbstractParser<IncompatibleConfig>() {
-      @java.lang.Override
-      public IncompatibleConfig parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new IncompatibleConfig(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<IncompatibleConfig> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<IncompatibleConfig> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public akka.cluster.protobuf.msg.ClusterMessages.IncompatibleConfig getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-    public static final int CHECKCONFIG_FIELD_NUMBER = 101;
-    /**
-     * <code>extend .ConfigCheck { ... }</code>
-     */
-    public static final
-      com.google.protobuf.GeneratedMessage.GeneratedExtension<
-        akka.cluster.protobuf.msg.ClusterMessages.ConfigCheck,
-        akka.cluster.protobuf.msg.ClusterMessages.IncompatibleConfig> checkConfig = com.google.protobuf.GeneratedMessage
-            .newMessageScopedGeneratedExtension(
-          akka.cluster.protobuf.msg.ClusterMessages.IncompatibleConfig.getDefaultInstance(),
-          0,
-          akka.cluster.protobuf.msg.ClusterMessages.IncompatibleConfig.class,
-          akka.cluster.protobuf.msg.ClusterMessages.IncompatibleConfig.getDefaultInstance());
-  }
-
-  public interface CompatibleConfigOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:CompatibleConfig)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>required string clusterConfig = 2;</code>
-     */
-    boolean hasClusterConfig();
-    /**
-     * <code>required string clusterConfig = 2;</code>
-     */
-    java.lang.String getClusterConfig();
-    /**
-     * <code>required string clusterConfig = 2;</code>
-     */
-    com.google.protobuf.ByteString
-        getClusterConfigBytes();
-  }
-  /**
-   * Protobuf type {@code CompatibleConfig}
-   */
-  public  static final class CompatibleConfig extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:CompatibleConfig)
-      CompatibleConfigOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use CompatibleConfig.newBuilder() to construct.
-    private CompatibleConfig(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private CompatibleConfig() {
-      clusterConfig_ = "";
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new CompatibleConfig();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private CompatibleConfig(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 18: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000001;
-              clusterConfig_ = bs;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return akka.cluster.protobuf.msg.ClusterMessages.internal_static_CompatibleConfig_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return akka.cluster.protobuf.msg.ClusterMessages.internal_static_CompatibleConfig_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              akka.cluster.protobuf.msg.ClusterMessages.CompatibleConfig.class, akka.cluster.protobuf.msg.ClusterMessages.CompatibleConfig.Builder.class);
-    }
-
-    private int bitField0_;
-    public static final int CLUSTERCONFIG_FIELD_NUMBER = 2;
-    private volatile java.lang.Object clusterConfig_;
-    /**
-     * <code>required string clusterConfig = 2;</code>
-     */
-    public boolean hasClusterConfig() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <code>required string clusterConfig = 2;</code>
-     */
-    public java.lang.String getClusterConfig() {
-      java.lang.Object ref = clusterConfig_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          clusterConfig_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>required string clusterConfig = 2;</code>
-     */
-    public com.google.protobuf.ByteString
-        getClusterConfigBytes() {
-      java.lang.Object ref = clusterConfig_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        clusterConfig_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      if (!hasClusterConfig()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, clusterConfig_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, clusterConfig_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof akka.cluster.protobuf.msg.ClusterMessages.CompatibleConfig)) {
-        return super.equals(obj);
-      }
-      akka.cluster.protobuf.msg.ClusterMessages.CompatibleConfig other = (akka.cluster.protobuf.msg.ClusterMessages.CompatibleConfig) obj;
-
-      if (hasClusterConfig() != other.hasClusterConfig()) return false;
-      if (hasClusterConfig()) {
-        if (!getClusterConfig()
-            .equals(other.getClusterConfig())) return false;
-      }
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasClusterConfig()) {
-        hash = (37 * hash) + CLUSTERCONFIG_FIELD_NUMBER;
-        hash = (53 * hash) + getClusterConfig().hashCode();
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static akka.cluster.protobuf.msg.ClusterMessages.CompatibleConfig parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static akka.cluster.protobuf.msg.ClusterMessages.CompatibleConfig parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static akka.cluster.protobuf.msg.ClusterMessages.CompatibleConfig parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static akka.cluster.protobuf.msg.ClusterMessages.CompatibleConfig parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static akka.cluster.protobuf.msg.ClusterMessages.CompatibleConfig parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static akka.cluster.protobuf.msg.ClusterMessages.CompatibleConfig parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static akka.cluster.protobuf.msg.ClusterMessages.CompatibleConfig parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static akka.cluster.protobuf.msg.ClusterMessages.CompatibleConfig parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static akka.cluster.protobuf.msg.ClusterMessages.CompatibleConfig parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static akka.cluster.protobuf.msg.ClusterMessages.CompatibleConfig parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static akka.cluster.protobuf.msg.ClusterMessages.CompatibleConfig parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static akka.cluster.protobuf.msg.ClusterMessages.CompatibleConfig parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(akka.cluster.protobuf.msg.ClusterMessages.CompatibleConfig prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code CompatibleConfig}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:CompatibleConfig)
-        akka.cluster.protobuf.msg.ClusterMessages.CompatibleConfigOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return akka.cluster.protobuf.msg.ClusterMessages.internal_static_CompatibleConfig_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return akka.cluster.protobuf.msg.ClusterMessages.internal_static_CompatibleConfig_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                akka.cluster.protobuf.msg.ClusterMessages.CompatibleConfig.class, akka.cluster.protobuf.msg.ClusterMessages.CompatibleConfig.Builder.class);
-      }
-
-      // Construct using akka.cluster.protobuf.msg.ClusterMessages.CompatibleConfig.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        clusterConfig_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return akka.cluster.protobuf.msg.ClusterMessages.internal_static_CompatibleConfig_descriptor;
-      }
-
-      @java.lang.Override
-      public akka.cluster.protobuf.msg.ClusterMessages.CompatibleConfig getDefaultInstanceForType() {
-        return akka.cluster.protobuf.msg.ClusterMessages.CompatibleConfig.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public akka.cluster.protobuf.msg.ClusterMessages.CompatibleConfig build() {
-        akka.cluster.protobuf.msg.ClusterMessages.CompatibleConfig result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public akka.cluster.protobuf.msg.ClusterMessages.CompatibleConfig buildPartial() {
-        akka.cluster.protobuf.msg.ClusterMessages.CompatibleConfig result = new akka.cluster.protobuf.msg.ClusterMessages.CompatibleConfig(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.clusterConfig_ = clusterConfig_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof akka.cluster.protobuf.msg.ClusterMessages.CompatibleConfig) {
-          return mergeFrom((akka.cluster.protobuf.msg.ClusterMessages.CompatibleConfig)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(akka.cluster.protobuf.msg.ClusterMessages.CompatibleConfig other) {
-        if (other == akka.cluster.protobuf.msg.ClusterMessages.CompatibleConfig.getDefaultInstance()) return this;
-        if (other.hasClusterConfig()) {
-          bitField0_ |= 0x00000001;
-          clusterConfig_ = other.clusterConfig_;
-          onChanged();
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        if (!hasClusterConfig()) {
-          return false;
-        }
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        akka.cluster.protobuf.msg.ClusterMessages.CompatibleConfig parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (akka.cluster.protobuf.msg.ClusterMessages.CompatibleConfig) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      private java.lang.Object clusterConfig_ = "";
-      /**
-       * <code>required string clusterConfig = 2;</code>
-       */
-      public boolean hasClusterConfig() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-      /**
-       * <code>required string clusterConfig = 2;</code>
-       */
-      public java.lang.String getClusterConfig() {
-        java.lang.Object ref = clusterConfig_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            clusterConfig_ = s;
-          }
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>required string clusterConfig = 2;</code>
-       */
-      public com.google.protobuf.ByteString
-          getClusterConfigBytes() {
-        java.lang.Object ref = clusterConfig_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          clusterConfig_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>required string clusterConfig = 2;</code>
-       */
-      public Builder setClusterConfig(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        clusterConfig_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string clusterConfig = 2;</code>
-       */
-      public Builder clearClusterConfig() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        clusterConfig_ = getDefaultInstance().getClusterConfig();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string clusterConfig = 2;</code>
-       */
-      public Builder setClusterConfigBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        clusterConfig_ = value;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:CompatibleConfig)
-    }
-
-    // @@protoc_insertion_point(class_scope:CompatibleConfig)
-    private static final akka.cluster.protobuf.msg.ClusterMessages.CompatibleConfig DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new akka.cluster.protobuf.msg.ClusterMessages.CompatibleConfig();
-    }
-
-    public static akka.cluster.protobuf.msg.ClusterMessages.CompatibleConfig getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<CompatibleConfig>
-        PARSER = new com.google.protobuf.AbstractParser<CompatibleConfig>() {
-      @java.lang.Override
-      public CompatibleConfig parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CompatibleConfig(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<CompatibleConfig> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<CompatibleConfig> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public akka.cluster.protobuf.msg.ClusterMessages.CompatibleConfig getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-    public static final int CHECKCONFIG_FIELD_NUMBER = 102;
-    /**
-     * <code>extend .ConfigCheck { ... }</code>
-     */
-    public static final
-      com.google.protobuf.GeneratedMessage.GeneratedExtension<
-        akka.cluster.protobuf.msg.ClusterMessages.ConfigCheck,
-        akka.cluster.protobuf.msg.ClusterMessages.CompatibleConfig> checkConfig = com.google.protobuf.GeneratedMessage
-            .newMessageScopedGeneratedExtension(
-          akka.cluster.protobuf.msg.ClusterMessages.CompatibleConfig.getDefaultInstance(),
-          0,
-          akka.cluster.protobuf.msg.ClusterMessages.CompatibleConfig.class,
-          akka.cluster.protobuf.msg.ClusterMessages.CompatibleConfig.getDefaultInstance());
   }
 
   public interface HeartbeatOrBuilder extends
@@ -22598,21 +21112,6 @@ public final class ClusterMessages {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_ConfigCheck_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_UncheckedConfig_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_UncheckedConfig_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_IncompatibleConfig_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_IncompatibleConfig_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_CompatibleConfig_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_CompatibleConfig_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Heartbeat_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -22721,58 +21220,52 @@ public final class ClusterMessages {
       " \002(\0162\021.ConfigCheck.Type\022\025\n\rclusterConfig" +
       "\030\002 \001(\t\"I\n\004Type\022\023\n\017UncheckedConfig\020\001\022\026\n\022I" +
       "ncompatibleConfig\020\002\022\024\n\020CompatibleConfig\020" +
-      "\003*\004\010d\020g\"F\n\017UncheckedConfig23\n\013checkConfi" +
-      "g\022\014.ConfigCheck\030d \001(\0132\020.UncheckedConfig\"" +
-      "L\n\022IncompatibleConfig26\n\013checkConfig\022\014.C" +
-      "onfigCheck\030e \001(\0132\023.IncompatibleConfig\"_\n" +
-      "\020CompatibleConfig\022\025\n\rclusterConfig\030\002 \002(\t" +
-      "24\n\013checkConfig\022\014.ConfigCheck\030f \001(\0132\021.Co" +
-      "mpatibleConfig\"M\n\tHeartbeat\022\026\n\004from\030\001 \002(" +
-      "\0132\010.Address\022\022\n\nsequenceNr\030\002 \001(\003\022\024\n\014creat" +
-      "ionTime\030\003 \001(\022\"[\n\021HeartBeatResponse\022\034\n\004fr" +
-      "om\030\001 \002(\0132\016.UniqueAddress\022\022\n\nsequenceNr\030\002" +
-      " \001(\003\022\024\n\014creationTime\030\003 \001(\003\"d\n\016GossipEnve" +
-      "lope\022\034\n\004from\030\001 \002(\0132\016.UniqueAddress\022\032\n\002to" +
-      "\030\002 \002(\0132\016.UniqueAddress\022\030\n\020serializedGoss" +
-      "ip\030\003 \002(\014\"^\n\014GossipStatus\022\034\n\004from\030\001 \002(\0132\016" +
-      ".UniqueAddress\022\021\n\tallHashes\030\002 \003(\t\022\035\n\007ver" +
-      "sion\030\003 \002(\0132\014.VectorClock\"\317\001\n\006Gossip\022$\n\014a" +
-      "llAddresses\030\001 \003(\0132\016.UniqueAddress\022\020\n\010all" +
-      "Roles\030\002 \003(\t\022\021\n\tallHashes\030\003 \003(\t\022\030\n\007member" +
-      "s\030\004 \003(\0132\007.Member\022!\n\010overview\030\005 \002(\0132\017.Gos" +
-      "sipOverview\022\035\n\007version\030\006 \002(\0132\014.VectorClo" +
-      "ck\022\036\n\ntombstones\030\007 \003(\0132\n.Tombstone\"S\n\016Go" +
-      "ssipOverview\022\014\n\004seen\030\001 \003(\005\0223\n\024observerRe" +
-      "achability\030\002 \003(\0132\025.ObserverReachability\"" +
-      "p\n\024ObserverReachability\022\024\n\014addressIndex\030" +
-      "\001 \002(\005\022\017\n\007version\030\004 \002(\003\0221\n\023subjectReachab" +
-      "ility\030\002 \003(\0132\024.SubjectReachability\"a\n\023Sub" +
-      "jectReachability\022\024\n\014addressIndex\030\001 \002(\005\022#" +
-      "\n\006status\030\003 \002(\0162\023.ReachabilityStatus\022\017\n\007v" +
-      "ersion\030\004 \002(\003\"4\n\tTombstone\022\024\n\014addressInde" +
-      "x\030\001 \002(\005\022\021\n\ttimestamp\030\002 \002(\003\"i\n\006Member\022\024\n\014" +
-      "addressIndex\030\001 \002(\005\022\020\n\010upNumber\030\002 \002(\005\022\035\n\006" +
-      "status\030\003 \002(\0162\r.MemberStatus\022\030\n\014rolesInde" +
-      "xes\030\004 \003(\005B\002\020\001\"y\n\013VectorClock\022\021\n\ttimestam" +
-      "p\030\001 \001(\003\022&\n\010versions\030\002 \003(\0132\024.VectorClock." +
-      "Version\032/\n\007Version\022\021\n\thashIndex\030\001 \002(\005\022\021\n" +
-      "\ttimestamp\030\002 \002(\003\"\007\n\005Empty\"K\n\007Address\022\016\n\006" +
-      "system\030\001 \002(\t\022\020\n\010hostname\030\002 \002(\t\022\014\n\004port\030\003" +
-      " \002(\r\022\020\n\010protocol\030\004 \001(\t\"E\n\rUniqueAddress\022" +
-      "\031\n\007address\030\001 \002(\0132\010.Address\022\013\n\003uid\030\002 \002(\r\022" +
-      "\014\n\004uid2\030\003 \001(\r\"V\n\021ClusterRouterPool\022\023\n\004po" +
-      "ol\030\001 \002(\0132\005.Pool\022,\n\010settings\030\002 \002(\0132\032.Clus" +
-      "terRouterPoolSettings\"<\n\004Pool\022\024\n\014seriali" +
-      "zerId\030\001 \002(\r\022\020\n\010manifest\030\002 \002(\t\022\014\n\004data\030\003 " +
-      "\002(\014\"\216\001\n\031ClusterRouterPoolSettings\022\026\n\016tot" +
-      "alInstances\030\001 \002(\r\022\033\n\023maxInstancesPerNode" +
-      "\030\002 \002(\r\022\031\n\021allowLocalRoutees\030\003 \002(\010\022\017\n\007use" +
-      "Role\030\004 \001(\t\022\020\n\010useRoles\030\005 \003(\t*D\n\022Reachabi" +
-      "lityStatus\022\r\n\tReachable\020\000\022\017\n\013Unreachable" +
-      "\020\001\022\016\n\nTerminated\020\002*b\n\014MemberStatus\022\013\n\007Jo" +
-      "ining\020\000\022\006\n\002Up\020\001\022\013\n\007Leaving\020\002\022\013\n\007Exiting\020" +
-      "\003\022\010\n\004Down\020\004\022\013\n\007Removed\020\005\022\014\n\010WeaklyUp\020\006B\035" +
-      "\n\031akka.cluster.protobuf.msgH\001"
+      "\003*\004\010d\020g\"M\n\tHeartbeat\022\026\n\004from\030\001 \002(\0132\010.Add" +
+      "ress\022\022\n\nsequenceNr\030\002 \001(\003\022\024\n\014creationTime" +
+      "\030\003 \001(\022\"[\n\021HeartBeatResponse\022\034\n\004from\030\001 \002(" +
+      "\0132\016.UniqueAddress\022\022\n\nsequenceNr\030\002 \001(\003\022\024\n" +
+      "\014creationTime\030\003 \001(\003\"d\n\016GossipEnvelope\022\034\n" +
+      "\004from\030\001 \002(\0132\016.UniqueAddress\022\032\n\002to\030\002 \002(\0132" +
+      "\016.UniqueAddress\022\030\n\020serializedGossip\030\003 \002(" +
+      "\014\"^\n\014GossipStatus\022\034\n\004from\030\001 \002(\0132\016.Unique" +
+      "Address\022\021\n\tallHashes\030\002 \003(\t\022\035\n\007version\030\003 " +
+      "\002(\0132\014.VectorClock\"\317\001\n\006Gossip\022$\n\014allAddre" +
+      "sses\030\001 \003(\0132\016.UniqueAddress\022\020\n\010allRoles\030\002" +
+      " \003(\t\022\021\n\tallHashes\030\003 \003(\t\022\030\n\007members\030\004 \003(\013" +
+      "2\007.Member\022!\n\010overview\030\005 \002(\0132\017.GossipOver" +
+      "view\022\035\n\007version\030\006 \002(\0132\014.VectorClock\022\036\n\nt" +
+      "ombstones\030\007 \003(\0132\n.Tombstone\"S\n\016GossipOve" +
+      "rview\022\014\n\004seen\030\001 \003(\005\0223\n\024observerReachabil" +
+      "ity\030\002 \003(\0132\025.ObserverReachability\"p\n\024Obse" +
+      "rverReachability\022\024\n\014addressIndex\030\001 \002(\005\022\017" +
+      "\n\007version\030\004 \002(\003\0221\n\023subjectReachability\030\002" +
+      " \003(\0132\024.SubjectReachability\"a\n\023SubjectRea" +
+      "chability\022\024\n\014addressIndex\030\001 \002(\005\022#\n\006statu" +
+      "s\030\003 \002(\0162\023.ReachabilityStatus\022\017\n\007version\030" +
+      "\004 \002(\003\"4\n\tTombstone\022\024\n\014addressIndex\030\001 \002(\005" +
+      "\022\021\n\ttimestamp\030\002 \002(\003\"i\n\006Member\022\024\n\014address" +
+      "Index\030\001 \002(\005\022\020\n\010upNumber\030\002 \002(\005\022\035\n\006status\030" +
+      "\003 \002(\0162\r.MemberStatus\022\030\n\014rolesIndexes\030\004 \003" +
+      "(\005B\002\020\001\"y\n\013VectorClock\022\021\n\ttimestamp\030\001 \001(\003" +
+      "\022&\n\010versions\030\002 \003(\0132\024.VectorClock.Version" +
+      "\032/\n\007Version\022\021\n\thashIndex\030\001 \002(\005\022\021\n\ttimest" +
+      "amp\030\002 \002(\003\"\007\n\005Empty\"K\n\007Address\022\016\n\006system\030" +
+      "\001 \002(\t\022\020\n\010hostname\030\002 \002(\t\022\014\n\004port\030\003 \002(\r\022\020\n" +
+      "\010protocol\030\004 \001(\t\"E\n\rUniqueAddress\022\031\n\007addr" +
+      "ess\030\001 \002(\0132\010.Address\022\013\n\003uid\030\002 \002(\r\022\014\n\004uid2" +
+      "\030\003 \001(\r\"V\n\021ClusterRouterPool\022\023\n\004pool\030\001 \002(" +
+      "\0132\005.Pool\022,\n\010settings\030\002 \002(\0132\032.ClusterRout" +
+      "erPoolSettings\"<\n\004Pool\022\024\n\014serializerId\030\001" +
+      " \002(\r\022\020\n\010manifest\030\002 \002(\t\022\014\n\004data\030\003 \002(\014\"\216\001\n" +
+      "\031ClusterRouterPoolSettings\022\026\n\016totalInsta" +
+      "nces\030\001 \002(\r\022\033\n\023maxInstancesPerNode\030\002 \002(\r\022" +
+      "\031\n\021allowLocalRoutees\030\003 \002(\010\022\017\n\007useRole\030\004 " +
+      "\001(\t\022\020\n\010useRoles\030\005 \003(\t*D\n\022ReachabilitySta" +
+      "tus\022\r\n\tReachable\020\000\022\017\n\013Unreachable\020\001\022\016\n\nT" +
+      "erminated\020\002*b\n\014MemberStatus\022\013\n\007Joining\020\000" +
+      "\022\006\n\002Up\020\001\022\013\n\007Leaving\020\002\022\013\n\007Exiting\020\003\022\010\n\004Do" +
+      "wn\020\004\022\013\n\007Removed\020\005\022\014\n\010WeaklyUp\020\006B\035\n\031akka." +
+      "cluster.protobuf.msgH\001"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -22808,86 +21301,68 @@ public final class ClusterMessages {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ConfigCheck_descriptor,
         new java.lang.String[] { "Type", "ClusterConfig", });
-    internal_static_UncheckedConfig_descriptor =
-      getDescriptor().getMessageTypes().get(5);
-    internal_static_UncheckedConfig_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_UncheckedConfig_descriptor,
-        new java.lang.String[] { });
-    internal_static_IncompatibleConfig_descriptor =
-      getDescriptor().getMessageTypes().get(6);
-    internal_static_IncompatibleConfig_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_IncompatibleConfig_descriptor,
-        new java.lang.String[] { });
-    internal_static_CompatibleConfig_descriptor =
-      getDescriptor().getMessageTypes().get(7);
-    internal_static_CompatibleConfig_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_CompatibleConfig_descriptor,
-        new java.lang.String[] { "ClusterConfig", });
     internal_static_Heartbeat_descriptor =
-      getDescriptor().getMessageTypes().get(8);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_Heartbeat_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Heartbeat_descriptor,
         new java.lang.String[] { "From", "SequenceNr", "CreationTime", });
     internal_static_HeartBeatResponse_descriptor =
-      getDescriptor().getMessageTypes().get(9);
+      getDescriptor().getMessageTypes().get(6);
     internal_static_HeartBeatResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_HeartBeatResponse_descriptor,
         new java.lang.String[] { "From", "SequenceNr", "CreationTime", });
     internal_static_GossipEnvelope_descriptor =
-      getDescriptor().getMessageTypes().get(10);
+      getDescriptor().getMessageTypes().get(7);
     internal_static_GossipEnvelope_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_GossipEnvelope_descriptor,
         new java.lang.String[] { "From", "To", "SerializedGossip", });
     internal_static_GossipStatus_descriptor =
-      getDescriptor().getMessageTypes().get(11);
+      getDescriptor().getMessageTypes().get(8);
     internal_static_GossipStatus_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_GossipStatus_descriptor,
         new java.lang.String[] { "From", "AllHashes", "Version", });
     internal_static_Gossip_descriptor =
-      getDescriptor().getMessageTypes().get(12);
+      getDescriptor().getMessageTypes().get(9);
     internal_static_Gossip_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Gossip_descriptor,
         new java.lang.String[] { "AllAddresses", "AllRoles", "AllHashes", "Members", "Overview", "Version", "Tombstones", });
     internal_static_GossipOverview_descriptor =
-      getDescriptor().getMessageTypes().get(13);
+      getDescriptor().getMessageTypes().get(10);
     internal_static_GossipOverview_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_GossipOverview_descriptor,
         new java.lang.String[] { "Seen", "ObserverReachability", });
     internal_static_ObserverReachability_descriptor =
-      getDescriptor().getMessageTypes().get(14);
+      getDescriptor().getMessageTypes().get(11);
     internal_static_ObserverReachability_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ObserverReachability_descriptor,
         new java.lang.String[] { "AddressIndex", "Version", "SubjectReachability", });
     internal_static_SubjectReachability_descriptor =
-      getDescriptor().getMessageTypes().get(15);
+      getDescriptor().getMessageTypes().get(12);
     internal_static_SubjectReachability_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SubjectReachability_descriptor,
         new java.lang.String[] { "AddressIndex", "Status", "Version", });
     internal_static_Tombstone_descriptor =
-      getDescriptor().getMessageTypes().get(16);
+      getDescriptor().getMessageTypes().get(13);
     internal_static_Tombstone_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Tombstone_descriptor,
         new java.lang.String[] { "AddressIndex", "Timestamp", });
     internal_static_Member_descriptor =
-      getDescriptor().getMessageTypes().get(17);
+      getDescriptor().getMessageTypes().get(14);
     internal_static_Member_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Member_descriptor,
         new java.lang.String[] { "AddressIndex", "UpNumber", "Status", "RolesIndexes", });
     internal_static_VectorClock_descriptor =
-      getDescriptor().getMessageTypes().get(18);
+      getDescriptor().getMessageTypes().get(15);
     internal_static_VectorClock_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_VectorClock_descriptor,
@@ -22899,37 +21374,37 @@ public final class ClusterMessages {
         internal_static_VectorClock_Version_descriptor,
         new java.lang.String[] { "HashIndex", "Timestamp", });
     internal_static_Empty_descriptor =
-      getDescriptor().getMessageTypes().get(19);
+      getDescriptor().getMessageTypes().get(16);
     internal_static_Empty_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Empty_descriptor,
         new java.lang.String[] { });
     internal_static_Address_descriptor =
-      getDescriptor().getMessageTypes().get(20);
+      getDescriptor().getMessageTypes().get(17);
     internal_static_Address_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Address_descriptor,
         new java.lang.String[] { "System", "Hostname", "Port", "Protocol", });
     internal_static_UniqueAddress_descriptor =
-      getDescriptor().getMessageTypes().get(21);
+      getDescriptor().getMessageTypes().get(18);
     internal_static_UniqueAddress_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_UniqueAddress_descriptor,
         new java.lang.String[] { "Address", "Uid", "Uid2", });
     internal_static_ClusterRouterPool_descriptor =
-      getDescriptor().getMessageTypes().get(22);
+      getDescriptor().getMessageTypes().get(19);
     internal_static_ClusterRouterPool_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ClusterRouterPool_descriptor,
         new java.lang.String[] { "Pool", "Settings", });
     internal_static_Pool_descriptor =
-      getDescriptor().getMessageTypes().get(23);
+      getDescriptor().getMessageTypes().get(20);
     internal_static_Pool_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Pool_descriptor,
         new java.lang.String[] { "SerializerId", "Manifest", "Data", });
     internal_static_ClusterRouterPoolSettings_descriptor =
-      getDescriptor().getMessageTypes().get(24);
+      getDescriptor().getMessageTypes().get(21);
     internal_static_ClusterRouterPoolSettings_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ClusterRouterPoolSettings_descriptor,

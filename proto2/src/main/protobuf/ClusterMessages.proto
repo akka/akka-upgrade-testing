@@ -57,7 +57,8 @@ message InitJoinAck {
 }
 
 message ConfigCheck {
-  extensions 100 to 102;
+  //removed as never extended/serialized
+  //extensions 100 to 102;
 
   enum Type {
     UncheckedConfig = 1;
@@ -67,29 +68,6 @@ message ConfigCheck {
   required Type type = 1;
 
   optional string clusterConfig = 2;
-}
-
-// TODO check that making these fields optional is wire compatible
-// We must "always" set them otherwise a rolling update won't work
-// as older version deserialisation will fail
-// in proto3 module these are requried
-message UncheckedConfig {
-  extend ConfigCheck {
-    required UncheckedConfig checkConfig = 100;
-  }
-}
-
-message IncompatibleConfig {
-  extend ConfigCheck {
-    required IncompatibleConfig checkConfig = 101;
-  }
-}
-
-message CompatibleConfig {
-  extend ConfigCheck {
-    optional CompatibleConfig checkConfig = 102;
-  }
-  required string clusterConfig = 2;
 }
 
 /**
