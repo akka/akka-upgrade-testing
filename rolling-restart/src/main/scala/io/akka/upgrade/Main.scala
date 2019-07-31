@@ -18,5 +18,12 @@ object Main extends App {
   bootstrap.start()
 
   val infoRoute = new InfoRoute(system)
-  Http(system).bindAndHandle(infoRoute.route, "0.0.0.0", 8080)
+  val interface =
+    if (system.settings.config.getString(
+          "akka.remote.artery.canonical.hostname"
+        ) == "<getHostAddress>")
+      "0.0.0.0"
+    else
+      system.settings.config.getString("akka.remote.artery.canonical.hostname")
+  Http(system).bindAndHandle(infoRoute.route, interface, 8080)
 }

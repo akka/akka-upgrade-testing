@@ -1,5 +1,11 @@
+import akka.actor.ActorSystem
+import akka.http.scaladsl.Http
+import akka.http.scaladsl.model.HttpRequest
+import akka.http.scaladsl.model.Uri
+import akka.stream.ActorMaterializer
 import org.scalatest.BeforeAndAfterAll
 import org.scalatest.WordSpec
+import org.scalatest.concurrent.ScalaFutures
 
 import scala.collection.immutable
 import scala.concurrent.duration.FiniteDuration
@@ -29,7 +35,10 @@ object RollingUpgradeSpec {
 
 }
 
-class RollingUpgradeSpec extends WordSpec with BeforeAndAfterAll {
+class RollingUpgradeSpec
+    extends WordSpec
+    with BeforeAndAfterAll
+    with ScalaFutures {
   import RollingUpgradeSpec._
 
   // add nightly here before a release
@@ -105,7 +114,26 @@ class RollingUpgradeSpec extends WordSpec with BeforeAndAfterAll {
       println(s"Building $version")
       s"./buildImage.sh $version" !
     }
-    "docker images" #| "head" !
+  }
+
+  implicit val system = ActorSystem()
+  implicit val mat = ActorMaterializer()
+
+  def url(): String = {
+    ("minikube service --url upgrade" !!).trim
+  }
+
+  def getVersions() = {
+    val cat = url()
+    println("URL: " + cat)
+    Http(system)
+      .singleRequest(HttpRequest(uri = Uri(cat + "/versions")))
+      .futureValue
+      .entity
+      .toStrict(2.seconds)(mat)
+      .futureValue
+      .data
+      .utf8String
   }
 
   var colour: Colour = Green
@@ -117,6 +145,7 @@ class RollingUpgradeSpec extends WordSpec with BeforeAndAfterAll {
       deploy(akkaVersions.head, colour, 3)
       assertAllReadyAndUpdated()
       logCheck()
+      println(getVersions())
     }
 
     akkaVersions.tail.foreach { version =>
@@ -148,6 +177,7 @@ class RollingUpgradeSpec extends WordSpec with BeforeAndAfterAll {
   }
 
   override def afterAll(): Unit = {
+    system.terminate()
     s"kubectl delete deployment akka-upgrade-testing-$colour" !
   }
 }

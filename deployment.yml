@@ -40,7 +40,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: akka-upgrade-testing-service
+  name: upgrade
 spec:
   selector:
     app: akka-upgrade-testing

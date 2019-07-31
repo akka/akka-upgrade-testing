@@ -1,16 +1,11 @@
 package io.akka.upgrade
 
-import akka.AkkaVersion
 import akka.actor.ActorSystem
 import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport
-import akka.http.scaladsl.server.Route
-import io.akka.upgrade.InfoRoute._
-import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport._
-import spray.json.DefaultJsonProtocol._
-import akka.http.scaladsl.server.Route
 import akka.http.scaladsl.server.Directives._
-import akka.http.scaladsl.model.StatusCodes
-import akka.util.ManifestInfo
+import akka.http.scaladsl.server.Route
+import org.slf4j.LoggerFactory
+import spray.json.DefaultJsonProtocol._
 import spray.json.RootJsonFormat
 
 object InfoRoute {
@@ -18,8 +13,9 @@ object InfoRoute {
 }
 
 class InfoRoute(system: ActorSystem) extends SprayJsonSupport {
+  val Log = LoggerFactory.getLogger(classOf[InfoRoute])
   implicit val itemFormat: RootJsonFormat[CollectVersions.Version] =
-    jsonFormat1(CollectVersions.Version)
+    jsonFormat2(CollectVersions.Version)
 
   val route: Route = get {
     path("versions") {
