@@ -67,7 +67,8 @@ class RollingUpgradeSpec
     "failed because of java.net.ConnectException: Connection refused",
     "Upstream failed, cause: Association$OutboundStreamStopQuarantinedSignal$",
     "Upstream failed, cause: StreamTcpException: Tcp command",
-    "Restarting graph due to failure. stack_trace:"
+    "Restarting graph due to failure. stack_trace:",
+    "Pool slot was shut down"
     // all these happen when a node can't connect / communicate but they typically resolve them selves as long as the node goes ready
   )
 
