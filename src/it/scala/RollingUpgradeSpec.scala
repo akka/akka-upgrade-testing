@@ -97,7 +97,8 @@ class RollingUpgradeSpec
       case (node, ls) =>
         val errorAndWarnings = ls.filter(line =>
           line.contains("ERROR") || line.contains("WARN") && logExcludes.forall(ex => !line.contains(ex)))
-        withClue(s"Warnings and errors found on node $node. \n" + ls.mkString("\n")) {
+        withClue(s"Warnings and errors found on node $node. All lines: \n ${ls
+          .mkString("\n")} \n Offending lines: \n ${errorAndWarnings.mkString("\n")}") {
           errorAndWarnings.nonEmpty shouldEqual false
         }
     }
