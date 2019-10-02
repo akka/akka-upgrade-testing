@@ -52,7 +52,7 @@ class RollingUpgradeSpec
   implicit val system = ActorSystem()
   implicit val mat = ActorMaterializer()
 
-  override implicit val patienceConfig: PatienceConfig = PatienceConfig(timeout = Span(120, Seconds))
+  override implicit val patienceConfig: PatienceConfig = PatienceConfig(timeout = Span(180, Seconds))
 
   // add nightly here before a release
   val akkaVersions = Seq("2.5.23", "2.6.0-M8")
@@ -95,7 +95,7 @@ class RollingUpgradeSpec
       case (node, ls) =>
         val errorAndWarnings = ls.filter(line =>
           line.contains("ERROR") || line.contains("WARN") && logExcludes.forall(ex => !line.contains(ex)))
-        withClue(s"Warnings and errors found on node $node. \n" + errorAndWarnings.mkString("\n")) {
+        withClue(s"Warnings and errors found on node $node. \n" + logs.mkString("\n")) {
           errorAndWarnings.nonEmpty shouldEqual false
         }
     }
