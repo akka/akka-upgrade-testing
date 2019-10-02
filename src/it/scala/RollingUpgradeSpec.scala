@@ -77,9 +77,10 @@ class RollingUpgradeSpec
   }
 
   def versions() = {
-    val cat = url()
+    val versionsUri = s"${url()}/versions"
+    println(s"using url |$versionsUri|")
     Http(system)
-      .singleRequest(HttpRequest(uri = Uri(cat + "/versions")))
+      .singleRequest(HttpRequest(uri = Uri(versionsUri)))
       .futureValue
       .entity
       .toStrict(2.seconds)(mat)
