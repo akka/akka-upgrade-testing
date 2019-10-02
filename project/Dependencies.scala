@@ -2,8 +2,8 @@ import sbt._
 
 object Dependencies {
   val akkaVersion = System.getProperty("override.akka.version", "2.5.23")
-  val akkaManagementVersion = "1.0.1"
-  val akkaHttpVersion = "10.1.9"
+  val akkaManagementVersion = "1.0.3"
+  val akkaHttpVersion = "10.1.10"
 
   val akkaClusterSharding = "com.typesafe.akka" %% "akka-cluster-sharding" % akkaVersion
   val akkaDiscovery = "com.typesafe.akka" %% "akka-discovery" % akkaVersion
@@ -30,7 +30,6 @@ object Dependencies {
       akkaHttp,
       akkaHttpSprayJson,
       scalaTest % "it",
-      logback
-    )
+      logback)
 
 }
