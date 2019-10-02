@@ -4,7 +4,7 @@ language: scala
 
 before_install:
   - curl -sL https://raw.githubusercontent.com/shyiko/jabba/0.11.1/install.sh | bash && . ~/.jabba/jabba.sh
-  - jabba install adopt@~1.8.192-12
+  - jabba install adopt@~1.8.0-202
 
 
 before_cache:
@@ -18,5 +18,5 @@ cache:
     - $HOME/.jabba/jdk
 
 script:
-  - jabba use ${JDK:=adopt@~1.8.192-12}
+  - jabba use ${JDK:=adopt@~1.8.0-202}
   - ./scripts/setup-minikube-for-linux.sh && sbt "it:test"
