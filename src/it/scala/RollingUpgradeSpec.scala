@@ -52,7 +52,7 @@ class RollingUpgradeSpec
   implicit val system = ActorSystem()
   implicit val mat = ActorMaterializer()
 
-  override implicit val patienceConfig: PatienceConfig = PatienceConfig(timeout = Span(180, Seconds))
+  override implicit val patienceConfig: PatienceConfig = PatienceConfig(timeout = Span(180, Seconds), interval = Span(5, Seconds))
 
   // add nightly here before a release
   val akkaVersions = Seq("2.5.23", "2.6.0-M8")
@@ -68,7 +68,8 @@ class RollingUpgradeSpec
     "Upstream failed, cause: Association$OutboundStreamStopQuarantinedSignal$",
     "Upstream failed, cause: StreamTcpException: Tcp command",
     "Restarting graph due to failure. stack_trace:",
-    "Pool slot was shut down"
+    "Pool slot was shut down",
+    "The connection closed with error: Connection reset by peer"
     // all these happen when a node can't connect / communicate but they typically resolve them selves as long as the node goes ready
   )
 
@@ -78,7 +79,7 @@ class RollingUpgradeSpec
 
   def versions() = {
     val versionsUri = s"${url()}/versions"
-    println(s"using url |$versionsUri|")
+    println(s"using versions uri |$versionsUri|")
     Http(system)
       .singleRequest(HttpRequest(uri = Uri(versionsUri)))
       .futureValue
@@ -95,8 +96,7 @@ class RollingUpgradeSpec
       nodes.map(pod => (pod, (s"kubectl logs $pod" !!).split("\\n")))
     logs.foreach {
       case (node, ls) =>
-        val errorAndWarnings = ls.filter(line =>
-          line.contains("ERROR") || line.contains("WARN") && logExcludes.forall(ex => !line.contains(ex)))
+        val errorAndWarnings = ls.filter(line => (line.contains("ERROR") || line.contains("WARN")) && logExcludes.forall(ex => !line.contains(ex)))
         withClue(s"Warnings and errors found on node $node. All lines: \n ${ls
           .mkString("\n")} \n Offending lines: \n ${errorAndWarnings.mkString("\n")}") {
           errorAndWarnings.nonEmpty shouldEqual false
@@ -110,11 +110,12 @@ class RollingUpgradeSpec
     withClue(status().mkString("\n")) {
       eventually {
         val s = status()
+        println(s"Current status: ${s.mkString("\n")}")
         s.forall(_.contains("1/1")) shouldEqual true
         s.forall(_.contains("Running")) shouldEqual true
-        logCheck()
         println("All ready \n" + s.mkString("\n"))
       }
+      logCheck()
     }
 
     println(versions())
