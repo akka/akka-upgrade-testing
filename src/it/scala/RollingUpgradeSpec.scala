@@ -74,7 +74,7 @@ class RollingUpgradeSpec
   )
 
   def url(): String = {
-    ("minikube service --url upgrade" !!).trim
+    ("minikube service --url upgrade" !!).trim.replace("* ", "")
   }
 
   def versions() = {
