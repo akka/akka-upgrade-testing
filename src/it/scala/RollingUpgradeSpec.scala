@@ -55,7 +55,12 @@ class RollingUpgradeSpec
   override implicit val patienceConfig: PatienceConfig = PatienceConfig(timeout = Span(180, Seconds), interval = Span(5, Seconds))
 
   // add nightly here before a release
-  val akkaVersions = Seq("2.5.23", "2.5.26", "2.6.0")
+  val akkaVersions = {
+    Seq("2.5.23", "2.5.29") ++
+    Option(System.getProperty("cron.build.akka.25.snapshot")).toSeq ++
+    Seq("2.6.3")++
+    Option(System.getProperty("cron.build.akka.26.snapshot")).toSeq
+  }
 
   def deploy(version: String, colour: Colour, replicas: Int): Unit = {
     "cat deployment.yml" #| s"sed s/VERSION/$version/g" #| s"sed s/COLOUR/${colour.name}/g" #| s"sed s/REPLICAS/$replicas/g" #| "kubectl apply -f -" !
