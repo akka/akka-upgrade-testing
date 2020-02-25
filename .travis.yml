@@ -20,3 +20,14 @@ cache:
 script:
   - jabba use ${JDK:=adopt@~1.8.0-202}
   - ./scripts/extraOptions && ./scripts/setup-minikube-for-linux.sh && sbt $EXTRA_OPTS "it:test"
+
+notifications:
+  email:
+    recipients:
+        ## Secret created using:
+        ##  $ travis encrypt --pro "something@something.com"
+        ##  Detected repository as ignasi35/akka-upgrade-testing, is this correct? |yes| no
+        ##  Repository slug (owner/name): |ignasi35/akka-upgrade-testing| akka/akka-upgrade-testing
+      secure: "nDnrjYGLpd6tJ+KZb7V8O+O4RE5waonjVZOPpuAl40VrHSuVOauNmb0ut7TcTkqAk1G0YmoxvumYu85vCy67kH9sgL0BXTsAu2zJJUNm3I9e92b8FuXpnWbTFC45SyYwOeFfdLOfDDbAk5rVWMQGKsCDTsqhuKZR+XAR4wwSgVgAFdhN/uQVyPXgwBGkAIbuMHuyvhb35y5JqpOvFYWO59Pd3DqrDq+tRm5l/3HpO6dYMYv472iF7xIRDVRUcANgJSZphlx2LGgO/H4BhPuY7yeQDmCrl3XD3ZczjrGPyOTpjQzo03vKL5fVisqotWiJkemlUBFXXork8TjsES6pfAB10JtNFksyI4pi1jmIbVvazG0VO3ZwNbtyFclZWlugIsv4lbvxWbyMWa29soN2pP0uVSSW1H3oR/RYlh7oCNAYPF5nFplSKqINbvyIrhOhvmusVRb/YKu5ekrpAHF5U+9147GACzOJSMkSx5hPNgXdG1Sko4BRq7O4EkAg29GXXnEIpV7u3b0wPCoGWYc3kdVlch8hy38VNqUzF1ZqLjk2QDOQiMhZu0TffrS0b+qLIaPbvxXcKdYLJ+VpJ5ysxJrHaRyoJSgquKjP7aV1GCaIUm4YnilWWNxjmVmgd6wIrmBw5dteTGw3WLn9Kwkciz5Rix0GiyoqI0wwz6P19HY="
+    on_success: never
+    on_failure: always
