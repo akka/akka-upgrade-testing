@@ -54,7 +54,6 @@ class RollingUpgradeSpec
 
   override implicit val patienceConfig: PatienceConfig = PatienceConfig(timeout = Span(180, Seconds), interval = Span(5, Seconds))
 
-  // add nightly here before a release
   val akkaVersions = {
     Seq("2.5.23", "2.5.29") ++
     Option(System.getProperty("cron.build.akka.25.snapshot")).toSeq ++
