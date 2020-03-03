@@ -61,6 +61,9 @@ class RollingUpgradeSpec
     Option(System.getProperty("cron.build.akka.26.snapshot")).toSeq
   }
 
+  println("Running with versions : " + akkaVersions)
+  
+
   def deploy(version: String, colour: Colour, replicas: Int): Unit = {
     "cat deployment.yml" #| s"sed s/VERSION/$version/g" #| s"sed s/COLOUR/${colour.name}/g" #| s"sed s/REPLICAS/$replicas/g" #| "kubectl apply -f -" !
   }
