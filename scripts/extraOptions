@@ -22,5 +22,5 @@ echo "Using Akka SNAPSHOTs [2.5: ${AKKA_25_SNAPSHOT}, 2.6: ${AKKA_26_SNAPSHOT}]"
 EXTRA_OPTS+=("-Dcron.build.akka.25.snapshot=${AKKA_25_SNAPSHOT}")
 EXTRA_OPTS+=("-Dcron.build.akka.26.snapshot=${AKKA_26_SNAPSHOT}")
 
-# export $EXTRA_OPTS
+export $EXTRA_OPTS
 #fi
