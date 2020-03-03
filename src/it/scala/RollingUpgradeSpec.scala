@@ -68,10 +68,11 @@ class RollingUpgradeSpec
 
 // Logs that may happen during shutdown that aren't a problem
   val logExcludes = Set(
-    "Connection attempt failed. Backing off new connection attempts", // happens during bootstrapo
+    "Connection attempt failed. Backing off new connection attempts", // happens during bootstrap
     "failed because of java.net.ConnectException: Connection refused",
     "Upstream failed, cause: Association$OutboundStreamStopQuarantinedSignal$",
     "Upstream failed, cause: StreamTcpException: Tcp command",
+    "Upstream failed, cause: StreamTcpException: The connection closed with error: Broken pipe",
     "Restarting graph due to failure. stack_trace:",
     "Pool slot was shut down",
     "The connection closed with error: Connection reset by peer"

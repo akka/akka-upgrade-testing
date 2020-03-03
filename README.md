@@ -4,7 +4,7 @@ Tests to show that rolling upgrades that upgrade Akka function.
 
 * Changes to serialisation
 
-A cluster is started in `mimikube` and for version in a list is is half upgraded,
+A cluster is started in `mimikube` and for versions in a list is half upgraded,
 tests run to make sure there is communication between nodes and then the upgrade
 is completed.
 
@@ -14,6 +14,12 @@ Future improvements:
     * Sharding
     * Singletons
     * Distributed data
+    
+## Log verification
+
+During each upgrade logs are checked for WARNs and ERRORs to catch any issues with the multi version cluster.
+
+There is a whitelist of logs in `RollingUpgradeSpec` that can be used to allow certain logs.
 
 ## Running locally
 
