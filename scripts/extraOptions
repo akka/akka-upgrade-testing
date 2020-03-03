@@ -5,11 +5,6 @@
 # Lib for CI scripts
 # copied and adapted from https://github.com/lagom/lagom/blob/1738a589816c6b12e4f9bcc05b7cba4d184da3b6/bin/scriptLib#L5
 
-set -e
-set -o pipefail
-
-EXTRA_OPTS=("")
-
 # Check if it is a scheduled build
 #if [ "$TRAVIS_EVENT_TYPE" = "cron" ]; then
 ## Search for snapshots is harcdoded to scala 2.13
@@ -19,8 +14,8 @@ AKKA_26_SNAPSHOT=$(curl -s https://repo.akka.io/snapshots/com/typesafe/akka/akka
 
 echo "Using Akka SNAPSHOTs [2.5: ${AKKA_25_SNAPSHOT}, 2.6: ${AKKA_26_SNAPSHOT}]"
 
-EXTRA_OPTS+=("-Dcron.build.akka.25.snapshot=${AKKA_25_SNAPSHOT}")
-EXTRA_OPTS+=("-Dcron.build.akka.26.snapshot=${AKKA_26_SNAPSHOT}")
+export EXTRA_OPTS="-Dcron.build.akka.25.snapshot=${AKKA_25_SNAPSHOT} -Dcron.build.akka.26.snapshot=${AKKA_26_SNAPSHOT}"
 
-export $EXTRA_OPTS
+echo "Extra opts: ${EXTRA_OPTS}"
+
 #fi
