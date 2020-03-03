@@ -56,9 +56,9 @@ class RollingUpgradeSpec
 
   val akkaVersions = {
     Seq("2.5.23", "2.5.29") ++
-    Option(System.getProperty("cron.build.akka.25.snapshot")).toSeq ++
+    Option(System.getProperty("build.akka.25.snapshot")).toSeq ++
     Seq("2.6.3")++
-    Option(System.getProperty("cron.build.akka.26.snapshot")).toSeq
+    Option(System.getProperty("build.akka.26.snapshot")).toSeq
   }
 
   println("Running with versions : " + akkaVersions)
