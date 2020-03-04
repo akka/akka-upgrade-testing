@@ -5,7 +5,7 @@ import Keys._
 import scala.sys.process.Process
 
 ThisBuild / version := akkaVersion
-ThisBuild / scalaVersion := "2.12.8"
+ThisBuild / scalaVersion := "2.13.1"
 ThisBuild / organization := "com.lightbend"
 ThisBuild / organizationName := "Lightbend Inc"
 
