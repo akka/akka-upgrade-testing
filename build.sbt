@@ -10,6 +10,7 @@ ThisBuild / organization := "com.lightbend"
 ThisBuild / organizationName := "Lightbend Inc"
 
 ThisBuild / testOptions in Test += Tests.Argument("-oDF")
+ThisBuild / resolvers += "Akka Snapshots" at "https://repo.akka.io/snapshots/"
 
 lazy val root = (project in file("."))
   .enablePlugins(JavaServerAppPackaging)
