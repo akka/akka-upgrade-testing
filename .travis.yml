@@ -19,7 +19,7 @@ cache:
 
 script:
   - jabba use ${JDK:=adopt@~1.8.0-202}
-  - ./scripts/extraOptions && ./scripts/setup-minikube-for-linux.sh && sbt $EXTRA_OPTS "it:test"
+  - . scripts/extraOptions && ./scripts/setup-minikube-for-linux.sh && sbt $EXTRA_OPTS "it:test"
 
 notifications:
   email:
