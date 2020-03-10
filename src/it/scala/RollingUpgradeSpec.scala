@@ -66,9 +66,9 @@ class RollingUpgradeSpec
  def dockerVersion(version: String): String = version.replace("+", "-")
 
   def deploy(version: String, colour: Colour, replicas: Int): Unit = {
-    val dockerVersion = dockerVersion(version)
-    println(s"Deploying version $dockerVersion")
-    "cat deployment.yml" #| s"sed s/VERSION/$dockerVersion/g" #| s"sed s/COLOUR/${colour.name}/g" #| s"sed s/REPLICAS/$replicas/g" #| "kubectl apply -f -" !
+    val dVersion = dockerVersion(version)
+    println(s"Deploying version $dVersion")
+    "cat deployment.yml" #| s"sed s/VERSION/$dVersion/g" #| s"sed s/COLOUR/${colour.name}/g" #| s"sed s/REPLICAS/$replicas/g" #| "kubectl apply -f -" !
   }
 
 // Logs that may happen during shutdown that aren't a problem
@@ -133,9 +133,9 @@ class RollingUpgradeSpec
 
   def buildImages(): Unit = {
     akkaVersions.foreach { version =>
-      val dockerVersion = dockerVersion(version)
-      println(s"Building $version - docker version $dockerVersion")
-      s"./buildImage.sh $dockerVersion" !
+      val dVersion = dockerVersion(version)
+      println(s"Building $version - docker version $dVersion")
+      s"./buildImage.sh $dVersion" !
     }
   }
 
