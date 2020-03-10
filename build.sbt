@@ -2,9 +2,7 @@ import Dependencies._
 import com.typesafe.sbt.packager.docker._
 import Keys._
 
-import scala.sys.process.Process
-
-ThisBuild / version := akkaVersion
+ThisBuild / version := akkaVersion.replace("+", "-")
 ThisBuild / scalaVersion := "2.13.1"
 ThisBuild / organization := "com.lightbend"
 ThisBuild / organizationName := "Lightbend Inc"
