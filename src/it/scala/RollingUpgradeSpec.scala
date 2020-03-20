@@ -57,7 +57,7 @@ class RollingUpgradeSpec
   val akkaVersions = {
     Seq("2.5.23", "2.5.29") ++
     Option(System.getProperty("build.akka.25.snapshot")).toSeq ++
-    Seq("2.6.3")++
+    Seq("2.6.4")++
     Option(System.getProperty("build.akka.26.snapshot")).toSeq
   }
 
@@ -135,16 +135,22 @@ class RollingUpgradeSpec
     akkaVersions.foreach { version =>
       val dVersion = dockerVersion(version)
       println(s"Building $version - docker version $dVersion")
-      s"./buildImage.sh $dVersion" !
+      withClue(s"Failed to build version $version") {
+        (s"./buildImage.sh $version" !) shouldEqual 0
+      }
     }
   }
 
   var colour: Colour = Green
 
-  buildImages()
 
   "Rolling upgrade" should {
-    "deploy an initial cluster" in {
+
+    "build images" in {
+      buildImages()
+    }
+
+    "deploy an initial cluster then upgrade through all the versions" in {
       deploy(akkaVersions.head, colour, 3)
       assertAllReadyAndUpdated()
       logCheck()
