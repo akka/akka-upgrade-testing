@@ -54,16 +54,21 @@ class RollingUpgradeSpec
 
   override implicit val patienceConfig: PatienceConfig = PatienceConfig(timeout = Span(180, Seconds), interval = Span(5, Seconds))
 
-  // add nightly here before a release
   val akkaVersions = {
     Seq("2.5.23", "2.5.29") ++
-    Option(System.getProperty("cron.build.akka.25.snapshot")).toSeq ++
-    Seq("2.6.3")++
-    Option(System.getProperty("cron.build.akka.26.snapshot")).toSeq
+    Option(System.getProperty("build.akka.25.snapshot")).toSeq ++
+    Seq("2.6.4")++
+    Option(System.getProperty("build.akka.26.snapshot")).toSeq
   }
 
+  println("Running with versions : " + akkaVersions)
+
+ def dockerVersion(version: String): String = version.replace("+", "-")
+
   def deploy(version: String, colour: Colour, replicas: Int): Unit = {
-    "cat deployment.yml" #| s"sed s/VERSION/$version/g" #| s"sed s/COLOUR/${colour.name}/g" #| s"sed s/REPLICAS/$replicas/g" #| "kubectl apply -f -" !
+    val dVersion = dockerVersion(version)
+    println(s"Deploying version $dVersion")
+    "cat deployment.yml" #| s"sed s/VERSION/$dVersion/g" #| s"sed s/COLOUR/${colour.name}/g" #| s"sed s/REPLICAS/$replicas/g" #| "kubectl apply -f -" !
   }
 
 // Logs that may happen during shutdown that aren't a problem
@@ -129,17 +134,24 @@ class RollingUpgradeSpec
 
   def buildImages(): Unit = {
     akkaVersions.foreach { version =>
-      println(s"Building $version")
-      s"./buildImage.sh $version" !
+      val dVersion = dockerVersion(version)
+      println(s"Building $version - docker version $dVersion")
+      withClue(s"Failed to build version $version") {
+        (s"./buildImage.sh $version" !) shouldEqual 0
+      }
     }
   }
 
   var colour: Colour = Green
 
-  buildImages()
 
   "Rolling upgrade" should {
-    "deploy an initial cluster" in {
+
+    "build images" in {
+      buildImages()
+    }
+
+    "deploy an initial cluster then upgrade through all the versions" in {
       deploy(akkaVersions.head, colour, 3)
       assertAllReadyAndUpdated()
       logCheck()

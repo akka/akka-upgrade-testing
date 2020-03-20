@@ -2,14 +2,13 @@ import Dependencies._
 import com.typesafe.sbt.packager.docker._
 import Keys._
 
-import scala.sys.process.Process
-
-ThisBuild / version := akkaVersion
-ThisBuild / scalaVersion := "2.12.8"
+ThisBuild / version := akkaVersion.replace("+", "-")
+ThisBuild / scalaVersion := "2.13.1"
 ThisBuild / organization := "com.lightbend"
 ThisBuild / organizationName := "Lightbend Inc"
 
 ThisBuild / testOptions in Test += Tests.Argument("-oDF")
+ThisBuild / resolvers += "Akka Snapshots" at "https://repo.akka.io/snapshots/"
 
 lazy val root = (project in file("."))
   .enablePlugins(JavaServerAppPackaging)

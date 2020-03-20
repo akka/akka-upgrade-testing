@@ -21,6 +21,13 @@ During each upgrade logs are checked for WARNs and ERRORs to catch any issues wi
 
 There is a whitelist of logs in `RollingUpgradeSpec` that can be used to allow certain logs.
 
+## Cron job and snapshots
+
+Once a day a Cron job runs the upgrade test with the latest the pre-configured versions as well as the
+latest 2.5 and 2.6 nightly snapshots.
+
+
+
 ## Running locally
 
 Have minikube running and setup docker to point to minikube's VM e.g. run:
