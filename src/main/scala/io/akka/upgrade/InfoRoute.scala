@@ -1,6 +1,6 @@
 package io.akka.upgrade
 
-import akka.actor.ActorSystem
+import akka.actor.typed.ActorSystem
 import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport
 import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server.Route
@@ -12,7 +12,7 @@ object InfoRoute {
   case class Info(akkaVersion: String)
 }
 
-class InfoRoute(system: ActorSystem) extends SprayJsonSupport {
+class InfoRoute(system: ActorSystem[_]) extends SprayJsonSupport {
   val Log = LoggerFactory.getLogger(classOf[InfoRoute])
   implicit val itemFormat: RootJsonFormat[CollectVersions.Version] =
     jsonFormat2(CollectVersions.Version)

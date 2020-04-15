@@ -1,13 +1,13 @@
 import sbt._
 
 object Dependencies {
-  val akkaVersion = System.getProperty("override.akka.version", "2.5.23")
+  val akkaVersion = System.getProperty("override.akka.version", "2.6.4")
   val akkaManagementVersion = "1.0.3"
   val akkaHttpVersion = "10.1.10"
 
-  val akkaClusterSharding = "com.typesafe.akka" %% "akka-cluster-sharding" % akkaVersion
+  val akkaClusterSharding = "com.typesafe.akka" %% "akka-cluster-sharding-typed" % akkaVersion
+  val akkaJackson = "com.typesafe.akka" %% "akka-serialization-jackson" % akkaVersion
   val akkaDiscovery = "com.typesafe.akka" %% "akka-discovery" % akkaVersion
-  val akkaSlf4j = "com.typesafe.akka" %% "akka-slf4j" % akkaVersion
   val akkaDiscoveryKubernetes = "com.lightbend.akka.discovery" %% "akka-discovery-kubernetes-api" % akkaManagementVersion
   val akkaManagementCluster = "com.lightbend.akka.management" %% "akka-management-cluster-http" % akkaManagementVersion
   val akkaManagementBootstrap = "com.lightbend.akka.management" %% "akka-management-cluster-bootstrap" % akkaManagementVersion
@@ -22,6 +22,7 @@ object Dependencies {
   val serviceDeps =
     Seq(
       akkaClusterSharding,
+      akkaJackson,
       akkaDiscovery,
       akkaDiscovery,
       akkaDiscoveryKubernetes,
