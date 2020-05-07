@@ -63,7 +63,7 @@ class RollingUpgradeSpec
     PatienceConfig(timeout = Span(180, Seconds), interval = Span(5, Seconds))
 
   val akkaVersions = {
-    Seq("2.6.3", "2.6.4") ++
+    Seq("2.6.4", "2.6.5") ++
     Option(System.getProperty("build.akka.26.snapshot")).toSeq
   }
 
