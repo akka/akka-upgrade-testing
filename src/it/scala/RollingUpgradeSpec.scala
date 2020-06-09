@@ -110,7 +110,7 @@ class RollingUpgradeSpec
 
   def testDdata() = {
     val ddataUri = s"${url()}/test/ddata"
-    println(s"using sharding uri |$ddataUri|")
+    println(s"using ddata uri |$ddataUri|")
     Http(system)
       .singleRequest(HttpRequest(uri = Uri(ddataUri)))
       .futureValue
@@ -150,9 +150,16 @@ class RollingUpgradeSpec
   }
 
   def printLogs(): Unit = {
+    def getLogs(pod: String): String = {
+      try {
+        s"kubectl logs $pod" !!
+      } catch {
+        case NonFatal(t) => s"unable to get logs for pod $pod. Reason: ${t.getMessage}"
+      }
+    }
     val nodes = ("kubectl get pods" !!).split("\\n").toList.tail.map(_.takeWhile(_ != ' '))
     val logs: immutable.Seq[(String, Array[String])] =
-      nodes.map(pod => (pod, (s"kubectl logs $pod" !!).split("\\n")))
+      nodes.map(pod => (pod, (getLogs(pod)).split("\\n")))
     logs.foreach {
       case (node, ls) =>
         println(s"# Log on node [$node]:\n${ls.mkString("\n")}")
