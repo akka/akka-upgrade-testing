@@ -17,9 +17,16 @@ class InfoRoute(system: ActorSystem[_]) extends SprayJsonSupport {
   implicit val itemFormat: RootJsonFormat[CollectVersions.Version] =
     jsonFormat2(CollectVersions.Version)
 
+  // Retry once before failing (and errors being logged which fails the test).
+  // The receptionist may have not removed a node that is leaving so one of the
+  // version asks may timeout
   val route: Route = get {
     path("versions") {
-      complete(CollectVersions.collect(system))
+      import akka.pattern.retry
+      import scala.concurrent.duration._
+      extractActorSystem { as =>
+        complete(retry(() => CollectVersions.collect(system), 2, 500.millis)(as.dispatcher, as.scheduler))
+      }
     }
   }
 }
