@@ -21,7 +21,8 @@ object Main extends App {
 
   val infoRoute = new InfoRoute(system)
   val testsRoute = new TestsRoute(system)
-  val routes = concat(infoRoute.route, testsRoute.route)
+  val clusterRoute = new ClusterRoute(system)
+  val routes = concat(infoRoute.route, testsRoute.route, clusterRoute.route)
 
   val interface =
     if (system.settings.config.getString("akka.remote.artery.canonical.hostname") == "<getHostAddress>")

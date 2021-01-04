@@ -1,7 +1,8 @@
 import sbt._
 
 object Dependencies {
-  val akkaVersion = System.getProperty("override.akka.version", "2.6.4")
+  // FIXME, remove once there is a nightly
+  val akkaVersion = System.getProperty("override.akka.version", "2.6.10+83-c2c44b53")
   val akkaManagementVersion = "1.0.3"
   val akkaHttpVersion = "10.1.10"
 
