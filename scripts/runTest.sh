@@ -13,6 +13,3 @@ OPTS="-Dbuild.akka.25.snapshot=${AKKA_25_SNAPSHOT} -Dbuild.akka.26.snapshot=${AK
 
 eval $(minikube -p minikube docker-env)
 sbt $OPTS "it:test" 
-
-
-
