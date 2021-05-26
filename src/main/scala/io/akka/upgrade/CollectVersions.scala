@@ -29,12 +29,11 @@ object CollectVersions {
       Behaviors.setup { context =>
         context.system.receptionist ! Receptionist.Register(serviceKey, context.self)
 
-        Behaviors.receive {
-          case (context, GetVersion(replyTo)) =>
-            replyTo ! Version(
-              Cluster(context.system).selfMember.address.toString,
-              ManifestInfo(context.system).versions("akka-actor").version)
-            Behaviors.same
+        Behaviors.receive { case (context, GetVersion(replyTo)) =>
+          replyTo ! Version(
+            Cluster(context.system).selfMember.address.toString,
+            ManifestInfo(context.system).versions("akka-actor").version)
+          Behaviors.same
         }
 
       }

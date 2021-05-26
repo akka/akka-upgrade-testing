@@ -8,9 +8,11 @@ object Dependencies {
   val akkaClusterSharding = "com.typesafe.akka" %% "akka-cluster-sharding-typed" % akkaVersion
   val akkaJackson = "com.typesafe.akka" %% "akka-serialization-jackson" % akkaVersion
   val akkaDiscovery = "com.typesafe.akka" %% "akka-discovery" % akkaVersion
-  val akkaDiscoveryKubernetes = "com.lightbend.akka.discovery" %% "akka-discovery-kubernetes-api" % akkaManagementVersion
+  val akkaDiscoveryKubernetes =
+    "com.lightbend.akka.discovery" %% "akka-discovery-kubernetes-api" % akkaManagementVersion
   val akkaManagementCluster = "com.lightbend.akka.management" %% "akka-management-cluster-http" % akkaManagementVersion
-  val akkaManagementBootstrap = "com.lightbend.akka.management" %% "akka-management-cluster-bootstrap" % akkaManagementVersion
+  val akkaManagementBootstrap =
+    "com.lightbend.akka.management" %% "akka-management-cluster-bootstrap" % akkaManagementVersion
 
   val akkaHttp = "com.typesafe.akka" %% "akka-http" % akkaHttpVersion
   val akkaHttpSprayJson = "com.typesafe.akka" %% "akka-http-spray-json" % akkaHttpVersion
