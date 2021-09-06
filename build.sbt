@@ -8,7 +8,8 @@ ThisBuild / organization := "com.lightbend"
 ThisBuild / organizationName := "Lightbend Inc"
 
 ThisBuild / Test / testOptions += Tests.Argument("-oDF")
-ThisBuild / resolvers += "Akka Snapshots".at("https://repo.akka.io/snapshots/")
+ThisBuild / resolvers += "akka.io snapshots".at("https://repo.akka.io/snapshots/")
+ThisBuild / resolvers += "sonatype snapshots".at("https://oss.sonatype.org/content/repositories/snapshots/")
 
 lazy val root = (project in file("."))
   .enablePlugins(JavaServerAppPackaging)
