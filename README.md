@@ -39,7 +39,7 @@ eval $(minikube docker-env)
 Modify `akkaVersions` in `RollingUpgradeSpec` to include the versions of Akka under test then run:
 
 ```
-sbt "it:test"
+sbt "It/test"
 ```
 
 
