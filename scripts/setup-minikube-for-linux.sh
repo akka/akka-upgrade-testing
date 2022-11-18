@@ -6,7 +6,7 @@ set -exu
 sudo apt update
 sudo apt install conntrack
 
-MINIKUBE_VERSION="v1.20.0"
+MINIKUBE_VERSION="v1.25.4"
 
 # From https://minikube.sigs.k8s.io/docs/tutorials/continuous_integration/
 curl -Lo minikube "https://storage.googleapis.com/minikube/releases/${MINIKUBE_VERSION}/minikube-linux-amd64" && chmod +x minikube && sudo cp minikube /usr/local/bin/ && rm minikube
