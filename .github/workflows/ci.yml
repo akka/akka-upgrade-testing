@@ -1,0 +1,30 @@
+name: Test Akka version upgrade
+
+on:
+  pull_request:
+  workflow_dispatch:
+#  schedule:
+#    - cron: "0 0 * * 6"
+
+permissions:
+  contents: read
+
+jobs:
+  upgrade-tests:
+    name: Akka Upgrade Tests
+    runs-on: ubuntu-22.04
+    if: github.repository == 'akka/akka-upgrade-testing'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.1.0
+
+      - name: Cache Coursier cache
+        uses: coursier/cache-action@v6.4.0
+
+      - name: Set up JDK 11
+        uses: coursier/setup-action@v1.3.0
+        with:
+          jvm: temurin:1.11.0
+
+      - name: Start Minikube and Run tests
+        run: ./scripts/setup-minikube-for-linux.sh && ./scripts/runTest.sh
