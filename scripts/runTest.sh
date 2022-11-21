@@ -12,4 +12,4 @@ echo "Using Akka SNAPSHOTs [2.5: ${AKKA_25_SNAPSHOT}, 2.6: ${AKKA_26_SNAPSHOT}]"
 OPTS="-Dbuild.akka.25.snapshot=${AKKA_25_SNAPSHOT} -Dbuild.akka.26.snapshot=${AKKA_26_SNAPSHOT}"
 
 eval $(minikube -p minikube docker-env)
-sbt $OPTS "it:test" 
+sbt $OPTS "It/test"
