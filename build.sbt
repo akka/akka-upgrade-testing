@@ -8,6 +8,7 @@ ThisBuild / organization := "com.lightbend"
 ThisBuild / organizationName := "Lightbend Inc"
 
 ThisBuild / Test / testOptions += Tests.Argument("-oDF")
+ThisBuild / resolvers += "Akka library repository".at("https://repo.akka.io/maven")
 ThisBuild / resolvers += "akka.io snapshots".at("https://repo.akka.io/snapshots/")
 ThisBuild / resolvers += "sonatype snapshots".at("https://oss.sonatype.org/content/repositories/snapshots/")
 
