@@ -26,5 +26,8 @@ jobs:
         with:
           jvm: temurin:1.11.0
 
+      - name: Setup global resolver
+        uses: akka/github-actions-scripts/setup_global_resolver@main
+
       - name: Start Minikube and Run tests
         run: ./scripts/setup-minikube-for-linux.sh && ./scripts/runTest.sh
